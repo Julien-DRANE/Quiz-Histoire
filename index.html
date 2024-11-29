@@ -1,21 +1,16 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Quiz Historique</title>
-        <link rel="stylesheet" href="style.css">
-        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-      </head>
-     
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quiz Historique</title>
   <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
   <!-- Zone d'affichage des messages -->
   <div id="feedback"></div>
+  <script src="confetti.min.js"></script>
 
   <!-- Conteneur principal du jeu -->
   <div id="game-container">
@@ -42,10 +37,13 @@
       <div class="progress-point" id="point-7"></div>
     </div>
 
+    <!-- Section du quiz -->
     <div id="quiz" style="display:none;">
       <div id="score">Score : 0</div>
       <div id="question" class="question"></div>
-      <div id="cards" class="card-container"></div>
+      <div id="cards" class="card-container">
+        <!-- Les cartes des réponses seront générées dynamiquement par script.js -->
+      </div>
     </div>
   </div>
 
@@ -56,7 +54,5 @@
       <div class="card-back"></div>
     </div>
   </div>
-
-  <script src="script.js"></script>
 </body>
 </html>

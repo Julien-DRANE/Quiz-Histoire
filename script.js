@@ -12,7 +12,17 @@ let currentEpoch = "";
 let currentQuestionIndex = 0;
 let currentQuestions = [];
 let correctSound;
-
+let isProcessing = false;
+// Échappe les caractères spéciaux pour éviter les erreurs HTML ou les attaques XSS
+function escapeHTML(string) {
+    return String(string)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  }
+  
 // Charge les questions depuis un fichier JSON
 function loadQuestions() {
   fetch("questions.json")
@@ -46,7 +56,12 @@ function showFeedback(message, isCorrect) {
 
 // Mélange un tableau
 function shuffleArray(array) {
-  return array.sort(() => Math.random() - 0.5);
+  const copy = [...array];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
 }
 
 // Fonction pour démarrer le jeu
@@ -60,7 +75,6 @@ function startGame(epoch) {
 
   document.getElementById("game-container").style.backgroundImage = `url('${backgrounds[epoch]}')`;
 
-  // Mélange les questions et sélectionne 7 questions uniques
   currentQuestions = shuffleArray(questions[epoch] || []).slice(0, 7);
   resetProgressTrack();
   loadQuestion();
@@ -74,18 +88,32 @@ function loadQuestion() {
   }
 
   const currentQuestion = currentQuestions[currentQuestionIndex];
+
+  if (
+    !currentQuestion.question ||
+    !Array.isArray(currentQuestion.answers) ||
+    currentQuestion.correct === undefined ||
+    currentQuestion.correct < 0 ||
+    currentQuestion.correct >= currentQuestion.answers.length
+  ) {
+    console.error("Question invalide détectée :", currentQuestion);
+    showFeedback("❌ Une erreur est survenue avec cette question !", false);
+    currentQuestionIndex++;
+    setTimeout(() => loadQuestion(), 3000);
+    return;
+  }
+
   document.getElementById("question").innerText = currentQuestion.question;
 
-  const answers = [...currentQuestion.answers];
-  const correctAnswer = answers[currentQuestion.correct];
-  const shuffledAnswers = shuffleArray([correctAnswer, ...answers.filter((_, idx) => idx !== currentQuestion.correct).slice(0, 2)]);
+  const answers = shuffleArray([...currentQuestion.answers]);
+  const correctAnswer = currentQuestion.answers[currentQuestion.correct];
 
   const cardsContainer = document.getElementById("cards");
-  cardsContainer.innerHTML = shuffledAnswers
-    .map((answer, idx) => `
-      <div class="card" onclick="checkCard('${answer === correctAnswer}', '${correctAnswer}')">
+  cardsContainer.innerHTML = answers
+    .map(answer => `
+      <div class="card" onclick="checkCard('${escapeHTML(answer)}', '${escapeHTML(correctAnswer)}')">
         <div class="card-inner">
-          <div class="card-front">${answer}</div>
+          <div class="card-front">${escapeHTML(answer)}</div>
           <div class="card-back"></div>
         </div>
       </div>
@@ -93,41 +121,45 @@ function loadQuestion() {
     .join("");
 }
 
+// Vérifie si une carte est cliquée
+function checkCard(selectedAnswer, correctAnswer) {
+  if (isProcessing) return;
+  isProcessing = true;
+
+  if (selectedAnswer === correctAnswer) {
+    currentScore += 5;
+    showFeedback("✅ Bonne réponse !", true);
+    correctSound.play();
+    updateProgressTrack(true);
+  } else {
+    currentScore -= 1;
+    showFeedback("❌ Mauvaise réponse !", false);
+    showCorrectAnswer(correctAnswer);
+    updateProgressTrack(false);
+  }
+
+  updateScore();
+  currentQuestionIndex++;
+
+  setTimeout(() => {
+    isProcessing = false;
+    loadQuestion();
+  }, 3000);
+}
+
 // Affiche la carte correcte au centre de l'écran
 function showCorrectAnswer(correctAnswer) {
   const correctCard = document.getElementById("correct-answer-card");
   const cardFront = correctCard.querySelector(".card-front");
 
-  // Met à jour le contenu de la face avant avec la bonne réponse
   cardFront.textContent = correctAnswer;
-
-  // Affiche et retourne la carte correcte
   correctCard.style.display = "block";
   correctCard.classList.add("show");
 
-  // Cache la carte après 3 secondes
   setTimeout(() => {
     correctCard.classList.remove("show");
     correctCard.style.display = "none";
   }, 3000);
-}
-
-// Vérifie si la carte cliquée est correcte
-function checkCard(isCorrect, correctAnswer) {
-  if (isCorrect === "true") {
-    currentScore += 5; // Ajoute 5 points pour une bonne réponse
-    showFeedback("✅ Bonne réponse !", true);
-    correctSound.play(); // Joue le son pour une bonne réponse
-    updateProgressTrack(true); // Met à jour le parcours pour une bonne réponse
-  } else {
-    currentScore -= 1; // Retire 1 point pour une mauvaise réponse
-    showFeedback("❌ Mauvaise réponse !", false);
-    showCorrectAnswer(correctAnswer); // Affiche la carte correcte
-    updateProgressTrack(false); // Met à jour le parcours pour une mauvaise réponse
-  }
-  updateScore();
-  currentQuestionIndex++;
-  setTimeout(() => loadQuestion(), 3000); // Attend que la carte correcte disparaisse avant de charger la suivante
 }
 
 // Met à jour l'affichage du score
@@ -159,52 +191,52 @@ function updateProgressTrack(isCorrect) {
     }
   }
 }
+
+// Fin du jeu et retour à l'écran de démarrage
+function endGame() {
+  document.getElementById("question").innerText = "Félicitations, vous avez terminé votre quête !";
+  document.getElementById("cards").innerHTML = "";
+
+  const allCorrect = currentQuestions.length === 7 && currentScore === 35;
+
+  if (allCorrect) {
+    showFeedback("🎉 Parfait ! Toutes les réponses sont correctes !", true);
+    triggerConfetti();
+  } else {
+    showFeedback(`🎉 Votre score final est de ${currentScore}`, true);
+  }
+
+  setTimeout(() => {
+    document.getElementById("epoch-select").style.display = "block";
+    document.getElementById("quiz").style.display = "none";
+    document.getElementById("game-container").style.backgroundImage = "none";
+  }, 5000);
+}
+
 // Déclenche une pluie de confettis
 function triggerConfetti() {
-    const duration = 5 * 1000; // 5 secondes
-    const end = Date.now() + duration;
-  
-    (function frame() {
-      confetti({
-        particleCount: 5,
-        angle: 60,
-        spread: 55,
-        origin: { x: 0 },
-      });
-      confetti({
-        particleCount: 5,
-        angle: 120,
-        spread: 55,
-        origin: { x: 1 },
-      });
-  
-      if (Date.now() < end) {
-        requestAnimationFrame(frame);
-      }
-    })();
-  }
-// Fin du jeu et retour à la page de démarrage
-function endGame() {
-    document.getElementById("question").innerText = "Félicitations, vous avez terminé votre quête !";
-    document.getElementById("cards").innerHTML = "";
-  
-    // Vérifie si toutes les réponses sont correctes
-    const allCorrect = currentQuestions.length === 7 && currentScore === 35;
-  
-    if (allCorrect) {
-      showFeedback("🎉 Parfait ! Toutes les réponses sont correctes !", true);
-      triggerConfetti(); // Déclenche les confettis
-    } else {
-      showFeedback(`🎉 Votre score final est de ${currentScore}`, true);
+  const duration = 5 * 1000;
+  const end = Date.now() + duration;
+
+  (function frame() {
+    confetti({
+      particleCount: 5,
+      angle: 60,
+      spread: 55,
+      origin: { x: 0 },
+    });
+    confetti({
+      particleCount: 5,
+      angle: 120,
+      spread: 55,
+      origin: { x: 1 },
+    });
+
+    if (Date.now() < end) {
+      requestAnimationFrame(frame);
     }
-  
-    setTimeout(() => {
-      // Retour à la page de démarrage
-      document.getElementById("epoch-select").style.display = "block";
-      document.getElementById("quiz").style.display = "none";
-      document.getElementById("game-container").style.backgroundImage = "none";
-    }, 3000);
-  }
+  })();
+}
 
 // Charger les questions et les sons au démarrage
 loadQuestions();
