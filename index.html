@@ -2,15 +2,19 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Quiz Historique</title>
   <link rel="stylesheet" href="style.css">
+  
+  <!-- Inclure Canvas Confetti via CDN avec defer -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js" defer></script>
+  
+  <!-- Inclure votre script principal avec defer, après Canvas Confetti -->
   <script src="script.js" defer></script>
 </head>
 <body>
   <!-- Zone d'affichage des messages -->
   <div id="feedback"></div>
-  <script src="confetti.min.js"></script>
 
   <!-- Conteneur principal du jeu -->
   <div id="game-container">
@@ -54,5 +58,9 @@
       <div class="card-back"></div>
     </div>
   </div>
+
+  <!-- Évitez d'inclure confetti.min.js localement si vous utilisez la version CDN -->
+  <!-- <script src="confetti.min.js"></script> -->
+
 </body>
 </html>

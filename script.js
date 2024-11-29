@@ -23,7 +23,7 @@ function escapeHTML(string) {
       .replace(/>/g, "&gt;")
       .replace(/"/g, "&quot;")
       .replace(/'/g, "&#039;");
-  }
+}
 
 // Détecte si l'appareil est tactile
 function isTouchDevice() {
@@ -49,6 +49,7 @@ function loadQuestions() {
 // Charge les sons
 function loadSounds() {
   correctSound = new Audio("audio/correct.mp3");
+  correctSound.preload = 'auto'; // Précharge le son
 }
 
 // Affiche un message dans la div feedback
@@ -118,8 +119,8 @@ function loadQuestion() {
 
   const cardsContainer = document.getElementById("cards");
   cardsContainer.innerHTML = answers
-    .map(answer => `
-      <div class="card" onclick="handleCardClick('${escapeHTML(answer)}', '${escapeHTML(correctAnswer)}', this)">
+    .map((answer, index) => `
+      <div class="card" tabindex="0" role="button" aria-pressed="false" aria-label="Réponse ${index + 1}: ${escapeHTML(answer)}" onclick="handleCardClick('${escapeHTML(answer)}', '${escapeHTML(correctAnswer)}', this)" onkeypress="handleKeyPress(event, '${escapeHTML(answer)}', '${escapeHTML(correctAnswer)}', this)">
         <div class="card-inner">
           <div class="card-front">${escapeHTML(answer)}</div>
           <div class="card-back"></div>
@@ -127,6 +128,8 @@ function loadQuestion() {
       </div>
     `)
     .join("");
+
+  // Ajout des écouteurs d'événements pour la navigation au clavier
 }
 
 // Gère le clic/touch sur une carte
@@ -152,6 +155,14 @@ function handleCardClick(selectedAnswer, correctAnswer, cardElement) {
   } else {
     // Sur desktop, valider directement
     checkCard(selectedAnswer, correctAnswer);
+  }
+}
+
+// Gère les événements clavier
+function handleKeyPress(event, selectedAnswer, correctAnswer, cardElement) {
+  if (event.key === 'Enter' || event.key === ' ') {
+    event.preventDefault();
+    handleCardClick(selectedAnswer, correctAnswer, cardElement);
   }
 }
 
@@ -241,16 +252,26 @@ function endGame() {
   }
 
   setTimeout(() => {
+    // Retourner à l'écran de sélection de l'époque après l'animation
     document.getElementById("epoch-select").style.display = "block";
     document.getElementById("quiz").style.display = "none";
     document.getElementById("game-container").style.backgroundImage = "none";
-  }, 5000);
+    // Réinitialiser le score si nécessaire
+    currentScore = 0;
+    updateScore();
+  }, 5000); // Assurez-vous que cette durée correspond à la durée des confettis
 }
 
 // Déclenche une pluie de confettis
 function triggerConfetti() {
-  const duration = 5 * 1000;
+  const duration = 5 * 1000; // 5 secondes
   const end = Date.now() + duration;
+
+  // Vérifiez si la fonction confetti est disponible
+  if (typeof confetti !== 'function') {
+    console.error("La fonction confetti n'est pas définie. Assurez-vous que Canvas Confetti est correctement inclus.");
+    return;
+  }
 
   (function frame() {
     confetti({
@@ -258,12 +279,14 @@ function triggerConfetti() {
       angle: 60,
       spread: 55,
       origin: { x: 0 },
+      colors: ['#bb0000', '#ffffff']
     });
     confetti({
       particleCount: 5,
       angle: 120,
       spread: 55,
       origin: { x: 1 },
+      colors: ['#00bb00', '#0000ff']
     });
 
     if (Date.now() < end) {
@@ -273,5 +296,7 @@ function triggerConfetti() {
 }
 
 // Charger les questions et les sons au démarrage
-loadQuestions();
-loadSounds();
+document.addEventListener('DOMContentLoaded', () => {
+  loadQuestions();
+  loadSounds();
+});
