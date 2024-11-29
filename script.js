@@ -13,6 +13,8 @@ let currentQuestionIndex = 0;
 let currentQuestions = [];
 let correctSound;
 let isProcessing = false;
+let selectedCard = null; // Nouvelle variable pour suivre la carte sélectionnée
+
 // Échappe les caractères spéciaux pour éviter les erreurs HTML ou les attaques XSS
 function escapeHTML(string) {
     return String(string)
@@ -22,7 +24,12 @@ function escapeHTML(string) {
       .replace(/"/g, "&quot;")
       .replace(/'/g, "&#039;");
   }
-  
+
+// Détecte si l'appareil est tactile
+function isTouchDevice() {
+  return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+}
+
 // Charge les questions depuis un fichier JSON
 function loadQuestions() {
   fetch("questions.json")
@@ -69,6 +76,7 @@ function startGame(epoch) {
   currentEpoch = epoch;
   currentScore = 0;
   currentQuestionIndex = 0;
+  selectedCard = null; // Réinitialise la carte sélectionnée
 
   document.getElementById("epoch-select").style.display = "none";
   document.getElementById("quiz").style.display = "block";
@@ -111,7 +119,7 @@ function loadQuestion() {
   const cardsContainer = document.getElementById("cards");
   cardsContainer.innerHTML = answers
     .map(answer => `
-      <div class="card" onclick="checkCard('${escapeHTML(answer)}', '${escapeHTML(correctAnswer)}')">
+      <div class="card" onclick="handleCardClick('${escapeHTML(answer)}', '${escapeHTML(correctAnswer)}', this)">
         <div class="card-inner">
           <div class="card-front">${escapeHTML(answer)}</div>
           <div class="card-back"></div>
@@ -119,6 +127,32 @@ function loadQuestion() {
       </div>
     `)
     .join("");
+}
+
+// Gère le clic/touch sur une carte
+function handleCardClick(selectedAnswer, correctAnswer, cardElement) {
+  if (isProcessing) return;
+
+  if (isTouchDevice()) {
+    if (selectedCard === cardElement) {
+      // Deuxième touche : valider la carte
+      checkCard(selectedAnswer, correctAnswer);
+      selectedCard = null;
+      // Retire la classe de sélection
+      cardElement.classList.remove('selected');
+    } else {
+      // Première touche : sélectionner la carte
+      if (selectedCard) {
+        // Désélectionne la carte précédemment sélectionnée
+        selectedCard.classList.remove('selected');
+      }
+      selectedCard = cardElement;
+      cardElement.classList.add('selected');
+    }
+  } else {
+    // Sur desktop, valider directement
+    checkCard(selectedAnswer, correctAnswer);
+  }
 }
 
 // Vérifie si une carte est cliquée
