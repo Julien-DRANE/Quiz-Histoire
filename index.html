@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Quiz Historique</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+      </head>
+     
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Historique</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Zone d'affichage des messages -->
+  <div id="feedback"></div>
+
+  <!-- Conteneur principal du jeu -->
+  <div id="game-container">
+    <h1>Quiz Historique</h1>
+    <div id="epoch-select">
+      <img src="images/start.png" alt="Page de démarrage" id="start-image">
+      <p>Choisissez une époque :</p>
+      <button onclick="startGame('antiquity')">Antiquité</button>
+      <button onclick="startGame('middle-age')">Moyen Âge</button>
+      <button onclick="startGame('renaissance')">Renaissance</button>
+      <button onclick="startGame('revolution')">Révolution Française</button>
+      <button onclick="startGame('20th-century')">XXe Siècle</button>
+      <button onclick="startGame('contemporary')">Époque Contemporaine</button>
+    </div>
+    
+    <!-- Parcours visuel -->
+    <div id="progress-track">
+      <div class="progress-point" id="point-1"></div>
+      <div class="progress-point" id="point-2"></div>
+      <div class="progress-point" id="point-3"></div>
+      <div class="progress-point" id="point-4"></div>
+      <div class="progress-point" id="point-5"></div>
+      <div class="progress-point" id="point-6"></div>
+      <div class="progress-point" id="point-7"></div>
+    </div>
+
+    <div id="quiz" style="display:none;">
+      <div id="score">Score : 0</div>
+      <div id="question" class="question"></div>
+      <div id="cards" class="card-container"></div>
+    </div>
+  </div>
+
+  <!-- Carte correcte affichée au centre -->
+  <div id="correct-answer-card">
+    <div class="card-inner">
+      <div class="card-front"></div>
+      <div class="card-back"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

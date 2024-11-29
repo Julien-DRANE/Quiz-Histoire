@@ -1,0 +1,824 @@
+{
+    "antiquity": [
+        {
+            "question": "Quelle est la capitale de l'Empire romain ?",
+            "answers": [
+                "Rome",
+                "Athènes",
+                "Alexandrie"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Qui a été assassiné en 44 av. J.-C. ?",
+            "answers": [
+                "Jules César",
+                "Néron",
+                "Caligula"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quelle langue était utilisée à Rome ?",
+            "answers": [
+                "Latin",
+                "Grec",
+                "Hébreu"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quel est le célèbre amphithéâtre de Rome ?",
+            "answers": [
+                "Colisée",
+                "Circus Maximus",
+                "Panthéon"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Qui a fondé la cité de Rome selon la légende ?",
+            "answers": [
+                "Romulus et Rémus",
+                "Jules César",
+                "Augustus"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "En quelle année l'Empire romain d'Occident est-il tombé ?",
+            "answers": [
+                "476",
+                "410",
+                "395"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quel général a traversé les Alpes avec des éléphants ?",
+            "answers": [
+                "Hannibal",
+                "Scipion",
+                "Pompée"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quel dieu était considéré comme le roi des dieux romains ?",
+            "answers": [
+                "Jupiter",
+                "Mars",
+                "Neptune"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quel est le nom de la mer entourant l'Empire romain ?",
+            "answers": [
+                "Mer Méditerranée",
+                "Mer Égée",
+                "Mer Adriatique"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Qu'est-ce qu'une légion dans l'armée romaine ?",
+            "answers": [
+                "Unité de soldats",
+                "Un temple",
+                "Une province"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Qui était le premier empereur romain ?",
+            "answers": [
+                "Auguste",
+                "Néron",
+                "Caligula"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quelle bataille a marqué la fin des guerres puniques ?",
+            "answers": [
+                "La bataille de Zama",
+                "La bataille d'Actium",
+                "La bataille de Philippes"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quel philosophe grec a enseigné Alexandre le Grand ?",
+            "answers": [
+                "Aristote",
+                "Platon",
+                "Socrate"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quelle structure a été construite pour acheminer l'eau à Rome ?",
+            "answers": [
+                "Les aqueducs",
+                "Les forums",
+                "Les thermes"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Qui a écrit 'L'Énéide' ?",
+            "answers": [
+                "Virgile",
+                "Ovide",
+                "Horace"
+            ],
+            "correct": 0
+        }
+    ],
+    "middle-age": [
+        {
+            "question": "Qui a été couronné empereur en l'an 800 ?",
+            "answers": [
+                "Charlemagne",
+                "Philippe II",
+                "Guillaume le Conquérant"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quelle bataille célèbre a eu lieu en 1066 ?",
+            "answers": [
+                "Hastings",
+                "Crécy",
+                "Poitiers"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quel roi anglais a mené la Troisième Croisade ?",
+            "answers": [
+                "Richard Cœur de Lion",
+                "Jean sans Terre",
+                "Édouard Ier"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quelle est la fonction des châteaux forts ?",
+            "answers": [
+                "Protection",
+                "Lieu de culte",
+                "Commerce"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quel moine a réformé l'Église au XIe siècle ?",
+            "answers": [
+                "Saint Bernard",
+                "Saint François",
+                "Saint Dominique"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quelle guerre a duré 116 ans ?",
+            "answers": [
+                "Guerre de Cent Ans",
+                "Croisades",
+                "Guerre des Deux-Roses"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quelle invention a révolutionné la communication au Moyen Âge ?",
+            "answers": [
+                "Imprimerie",
+                "Boussole",
+                "Lunette astronomique"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Qui a écrit 'La Divine Comédie' ?",
+            "answers": [
+                "Dante",
+                "Chaucer",
+                "Pétrarque"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quelle ville était le siège des papes au XIVe siècle ?",
+            "answers": [
+                "Avignon",
+                "Rome",
+                "Constantinople"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quel est le nom de l'épidémie qui a ravagé l'Europe au XIVe siècle ?",
+            "answers": [
+                "La peste noire",
+                "Le choléra",
+                "La grippe espagnole"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quel est le principal code de lois en usage en Angleterre médiévale ?",
+            "answers": [
+                "La common law",
+                "Le Code Napoléon",
+                "La Magna Carta"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quel est le nom de la guerre de succession qui a suivi la mort de Louis IV ?",
+            "answers": [
+                "La guerre de succession de Philippe d'Anjou",
+                "La guerre de Cent Ans",
+                "La guerre des Deux-Roses"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quel ordre religieux a été fondé par Saint Benoît ?",
+            "answers": [
+                "L'ordre bénédictin",
+                "L'ordre franciscain",
+                "L'ordre dominicain"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quel événement marque le début du Moyen Âge ?",
+            "answers": [
+                "La chute de l'Empire romain d'Occident",
+                "La naissance de Charlemagne",
+                "La bataille de Hastings"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quel est le nom de la grande cathédrale gothique située à Paris ?",
+            "answers": [
+                "Notre-Dame de Paris",
+                "La Cathédrale de Chartres",
+                "La Cathédrale de Reims"
+            ],
+            "correct": 0
+        }
+    ],
+    "renaissance": [
+        {
+            "question": "Quel artiste a peint la Joconde ?",
+            "answers": [
+                "Léonard de Vinci",
+                "Michel-Ange",
+                "Raphaël"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quel inventeur italien est connu pour ses croquis futuristes ?",
+            "answers": [
+                "Léonard de Vinci",
+                "Galilée",
+                "Gutenberg"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quelle ville est considérée comme le berceau de la Renaissance ?",
+            "answers": [
+                "Florence",
+                "Venise",
+                "Rome"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Qui a sculpté le David pendant la Renaissance ?",
+            "answers": [
+                "Michel-Ange",
+                "Donatello",
+                "Bernin"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quel scientifique a formulé la théorie héliocentrique ?",
+            "answers": [
+                "Nicolas Copernic",
+                "Galilée",
+                "Johannes Kepler"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quelle invention a permis la diffusion des idées de la Renaissance ?",
+            "answers": [
+                "L'imprimerie",
+                "La boussole",
+                "Le télescope"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Qui est l'auteur de 'Le Prince', traité politique de la Renaissance ?",
+            "answers": [
+                "Nicolas Machiavel",
+                "Thomas More",
+                "François Rabelais"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quel peintre est connu pour ses fresques dans la Chapelle Sixtine ?",
+            "answers": [
+                "Michel-Ange",
+                "Raphaël",
+                "Léonard de Vinci"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quelle famille influente a soutenu les arts pendant la Renaissance à Florence ?",
+            "answers": [
+                "Les Médicis",
+                "Les Borgias",
+                "Les Sforza"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quel poète italien a écrit 'Le Décaméron' ?",
+            "answers": [
+                "Boccace",
+                "Pétrarque",
+                "Dante"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quel archéologue a redécouvert Pompéi pendant la Renaissance ?",
+            "answers": [
+                "Carlo Borghèse",
+                "Giovanni Battista Belzoni",
+                "Johann Joachim Winckelmann"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quel est le mouvement artistique qui a suivi la Renaissance ?",
+            "answers": [
+                "Le maniérisme",
+                "Le baroque",
+                "Le gothique"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quel compositeur de la Renaissance a écrit la 'Missa Papae Marcelli' ?",
+            "answers": [
+                "Giovanni Pierluigi da Palestrina",
+                "Josquin des Prez",
+                "Claudio Monteverdi"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quel explorateur a découvert le Nouveau Monde pendant la Renaissance ?",
+            "answers": [
+                "Christophe Colomb",
+                "Vasco de Gama",
+                "Ferdinand Magellan"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quelle innovation militaire a été développée pendant la Renaissance ?",
+            "answers": [
+                "L'artillerie",
+                "Les chevaliers en armure",
+                "Les catapultes"
+            ],
+            "correct": 0
+        }
+    ],
+    "revolution": [
+        {
+            "question": "Quelle date marque le début de la Révolution française ?",
+            "answers": [
+                "1789",
+                "1792",
+                "1776"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Qui était roi de France lors de la Révolution ?",
+            "answers": [
+                "Louis XVI",
+                "Louis XV",
+                "Louis XIV"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quelle déclaration importante a été adoptée en 1789 ?",
+            "answers": [
+                "Déclaration des droits de l'homme et du citoyen",
+                "Code civil",
+                "Constitution française"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quel événement a conduit à l'exécution de Louis XVI ?",
+            "answers": [
+                "La prise de la Bastille",
+                "La fuite à Varennes",
+                "La Terreur"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quel révolutionnaire français est connu sous le nom de 'Maximilien Robespierre' ?",
+            "answers": [
+                "Robespierre",
+                "Danton",
+                "Marat"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quel fut le rôle de la guillotine pendant la Révolution française ?",
+            "answers": [
+                "Exécuter les condamnés",
+                "Mesurer le temps",
+                "Symboliser la liberté"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quelle guerre a suivi la Révolution française ?",
+            "answers": [
+                "Les guerres napoléoniennes",
+                "La guerre de Cent Ans",
+                "La guerre franco-prussienne"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quel document a aboli les privilèges féodaux en France ?",
+            "answers": [
+                "Les Décrets abolitionnistes",
+                "La Déclaration des droits de l'homme et du citoyen",
+                "La Constitution de 1791"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Qui a écrit 'Le Contrat social', influent pendant la Révolution ?",
+            "answers": [
+                "Jean-Jacques Rousseau",
+                "Voltaire",
+                "Montesquieu"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quelle est la période de la Révolution française caractérisée par la violence et les exécutions massives ?",
+            "answers": [
+                "La Terreur",
+                "La Monarchie constitutionnelle",
+                "Le Directoire"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quel empereur a émergé après la Révolution française ?",
+            "answers": [
+                "Napoléon Bonaparte",
+                "Louis XVIII",
+                "Charles X"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quel était le rôle des sans-culottes pendant la Révolution ?",
+            "answers": [
+                "Militants populaires",
+                "Membres de la noblesse",
+                "Représentants du clergé"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quel événement symbolique a eu lieu le 14 juillet 1789 ?",
+            "answers": [
+                "La prise de la Bastille",
+                "La fuite à Varennes",
+                "La déclaration des droits de l'homme"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quelle assemblée a été créée pour légiférer pendant la Révolution française ?",
+            "answers": [
+                "La Convention nationale",
+                "Le Sénat",
+                "Le Parlement"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quel est le symbole républicain adopté pendant la Révolution française ?",
+            "answers": [
+                "Le bonnet phrygien",
+                "La couronne royale",
+                "L'étoile de David"
+            ],
+            "correct": 0
+        }
+    ],
+    "20th-century": [
+        {
+            "question": "En quelle année la Première Guerre mondiale a-t-elle commencé ?",
+            "answers": [
+                "1914",
+                "1918",
+                "1939"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quel événement marque la fin de la Seconde Guerre mondiale ?",
+            "answers": [
+                "Capitulation du Japon",
+                "Chute de Berlin",
+                "Débarquement de Normandie"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quel mouvement a mené à la décolonisation de l'Inde ?",
+            "answers": [
+                "Non-violence de Gandhi",
+                "Révolution française",
+                "Mouvement des suffragettes"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quel conflit a opposé les États-Unis et l'Union soviétique après la Seconde Guerre mondiale ?",
+            "answers": [
+                "La Guerre froide",
+                "La Première Guerre mondiale",
+                "La Guerre de Corée"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "En quelle année le mur de Berlin est-il tombé ?",
+            "answers": [
+                "1989",
+                "1991",
+                "1985"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quel leader a dirigé l'Union soviétique pendant la Seconde Guerre mondiale ?",
+            "answers": [
+                "Joseph Staline",
+                "Vladimir Lénine",
+                "Nikita Khrouchtchev"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quelle crise économique mondiale a débuté en 1929 ?",
+            "answers": [
+                "La Grande Dépression",
+                "La crise pétrolière",
+                "La crise de 2008"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quel président américain a instauré le New Deal ?",
+            "answers": [
+                "Franklin D. Roosevelt",
+                "Herbert Hoover",
+                "Harry S. Truman"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quel événement a déclenché la Première Guerre mondiale ?",
+            "answers": [
+                "L'assassinat de l'archiduc François-Ferdinand",
+                "L'invasion de la Pologne",
+                "Le bombardement de Pearl Harbor"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quel traité a mis fin à la Première Guerre mondiale ?",
+            "answers": [
+                "Le traité de Versailles",
+                "Le traité de Tordesillas",
+                "Le traité de Paris"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quel mouvement artistique a émergé dans les années 1920 aux États-Unis ?",
+            "answers": [
+                "Les Années folles (Jazz Age)",
+                "Le Surréalisme",
+                "Le Romantisme"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Qui a été le premier homme à marcher sur la Lune ?",
+            "answers": [
+                "Neil Armstrong",
+                "Buzz Aldrin",
+                "Yuri Gagarin"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quelle guerre a opposé les États-Unis au Vietnam ?",
+            "answers": [
+                "La guerre du Vietnam",
+                "La guerre de Corée",
+                "La guerre du Golfe"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quel mouvement des années 1960 a lutté pour les droits civiques aux États-Unis ?",
+            "answers": [
+                "Le mouvement des droits civiques",
+                "Le mouvement hippie",
+                "Le mouvement féministe"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "En quelle année l'Union européenne a-t-elle été créée par le traité de Maastricht ?",
+            "answers": [
+                "1993",
+                "1986",
+                "2000"
+            ],
+            "correct": 0
+        }
+    ],
+    "contemporary": [
+        {
+            "question": "Quel réseau social a été créé en 2004 ?",
+            "answers": [
+                "Facebook",
+                "Twitter",
+                "Instagram"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quel événement a marqué le début du 21e siècle ?",
+            "answers": [
+                "Attentats du 11 septembre 2001",
+                "Crise financière de 2008",
+                "Lancement de l'euro"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quel pays est devenu la deuxième puissance économique mondiale en 2010 ?",
+            "answers": [
+                "Chine",
+                "États-Unis",
+                "Inde"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quel mouvement mondial lutte contre le changement climatique ?",
+            "answers": [
+                "Fridays for Future",
+                "Occupy Wall Street",
+                "Black Lives Matter"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quel smartphone a été lancé par Apple en 2007 ?",
+            "answers": [
+                "iPhone",
+                "iPad",
+                "iPod"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quelle pandémie a touché le monde à partir de 2020 ?",
+            "answers": [
+                "COVID-19",
+                "Grippe espagnole",
+                "SARS"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quel pays a accueilli les Jeux Olympiques d'été en 2016 ?",
+            "answers": [
+                "Brésil (Rio de Janeiro)",
+                "Chine (Pékin)",
+                "Royaume-Uni (Londres)"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quel est le moteur de recherche le plus utilisé dans le monde ?",
+            "answers": [
+                "Google",
+                "Bing",
+                "Yahoo"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quel phénomène technologique a popularisé les crypto-monnaies ?",
+            "answers": [
+                "La blockchain",
+                "L'intelligence artificielle",
+                "Le cloud computing"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quel film a remporté l'Oscar du meilleur film en 2023 ?",
+            "answers": [
+                "Everything Everywhere All at Once",
+                "The Power of the Dog",
+                "Nomadland"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quelle entreprise est connue pour ses véhicules électriques innovants ?",
+            "answers": [
+                "Tesla",
+                "Toyota",
+                "Ford"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quel réseau social a introduit les stories en 2016 ?",
+            "answers": [
+                "Instagram",
+                "Facebook",
+                "Snapchat"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quelle crise humanitaire a débuté en Syrie en 2011 ?",
+            "answers": [
+                "La guerre civile syrienne",
+                "Le génocide rwandais",
+                "La crise des Rohingyas"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quel acteur a joué le rôle de Iron Man dans l'univers cinématographique Marvel ?",
+            "answers": [
+                "Robert Downey Jr.",
+                "Chris Evans",
+                "Mark Ruffalo"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Quelle technologie permet de réaliser des transactions financières sans intermédiaires ?",
+            "answers": [
+                "La blockchain",
+                "Le NFC",
+                "Le Bluetooth"
+            ],
+            "correct": 0
+        }
+    ]
+}
