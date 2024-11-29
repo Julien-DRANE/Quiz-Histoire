@@ -299,4 +299,30 @@ body {
     transform: translateY(-50%);
     border-radius: 5px;
   }
-  
+  /* Indique une carte sélectionnée */
+.card.selected .card-inner {
+    transform: rotateY(180deg);
+    box-shadow: 0 0 10px 2px rgba(255, 255, 0, 0.7);
+    border: 2px solid #FFD700; /* Bordure dorée pour la sélection */
+}
+
+/* Optionnel : Désactiver l'effet hover sur les appareils tactiles */
+@media (hover: none) and (pointer: coarse) {
+    .card:hover .card-inner {
+        transform: none;
+    }
+}
+
+/* Ajout d'une transition pour une meilleure expérience visuelle */
+.card-inner {
+    transition: transform 0.6s, box-shadow 0.3s, border 0.3s;
+}
+
+/* Optionnel : Curseur différent pour indiquer l'interactivité */
+.card {
+    cursor: pointer;
+}
+
+.card.selected {
+    cursor: default;
+}
