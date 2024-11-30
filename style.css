@@ -1,328 +1,341 @@
 /* Corps du site */
 body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #000;
-    color: #fff;
-  }
-  
-  #game-container {
-    background-size: cover;
-    background-position: center;
-    min-height: 100vh;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    box-sizing: border-box;
-    transition: background-image 0.5s ease;
-  }
-  
-  /* Titre */
-  h1 {
-    font-size: 2em;
-    margin: 10px;
-  }
-  
-  /* Boutons */
-  button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 15px;
-    margin: 5px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s;
-  }
-  
-  button:hover {
-    background-color: #45a049;
-  }
-  
-  /* Score */
-  #score {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  /* Question */
-  .question {
-    font-size: 1.2em;
-    margin: 10px 0;
-  }
-  
-  /* Conteneur des cartes */
-  .card-container {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
-  
-  /* Cartes */
-  .card {
-    width: 28vw;
-    height: 37vw;
-    max-width: 120px;
-    max-height: 160px;
-    position: relative;
-    perspective: 1000px;
-    cursor: pointer;
-  }
-  
-  .card-inner {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    transform-style: preserve-3d;
-    transition: transform 0.6s;
-  }
-  
-  .card:hover .card-inner {
-    transform: rotateY(180deg);
-  }
-  
-  .card-front, .card-back {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    backface-visibility: hidden;
-    border-radius: 10px;
-  }
-  
-  /* Face avant */
-  .card-front {
-    background-image: url('images/carteface.png');
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #000;
-    font-size: 14px;
-    padding: 10px;
-    box-sizing: border-box;
-    transform: rotateY(180deg);
-  }
-  
-  /* Face arrière */
-  .card-back {
-    background-image: url('images/carte.png');
-    background-size: cover;
-    background-position: center;
-  }
-  /* Zone de feedback */
-#feedback {
-    position: fixed;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1000;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: #fff;
-    font-size: 18px;
-    padding: 10px 20px;
-    border-radius: 5px;
-    display: none; /* Masqué par défaut */
-    text-align: center;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-  }
-  
-  /* Animation d'apparition/disparition */
-  #feedback.show {
-    display: block;
-    animation: fadeInOut 3s ease;
-  }
-  
-  /* Animation CSS */
-  @keyframes fadeInOut {
-    0% { opacity: 0; transform: translateY(-20px); }
-    10% { opacity: 1; transform: translateY(0); }
-    90% { opacity: 1; transform: translateY(0); }
-    100% { opacity: 0; transform: translateY(-20px); }
-  }
-  /* Image de démarrage */
-#start-image {
-    display: block;
-    margin: 20px auto;
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-  }
-  /* Question avec un fond gris transparent */
-.question {
-    background-color: rgba(64, 45, 45, 0.734);
-    padding: 10px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-    margin: 10px auto;
-    max-width: 80%;
-    text-align: center;
-  }
-  
-  /* Conteneur des cartes en mode plein écran */
-  @media screen and (min-width: 1024px) {
-    .card-container {
-      margin-top: 30px; /* Remonte les cartes en plein écran */
-    }
-  }
-  /* Zone de feedback */
-#feedback {
-    position: fixed;
-    top: 200px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1000;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: #fff;
-    font-size: 18px;
-    padding: 10px 20px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-    display: none; /* Masqué par défaut */
-    animation: fadeInOut 3s ease;
-  }
-  
-  /* Animation d'apparition/disparition */
-  @keyframes fadeInOut {
-    0% { opacity: 0; transform: translate(-50%, -20px); }
-    10% { opacity: 1; transform: translate(-50%, 0); }
-    90% { opacity: 1; transform: translate(-50%, 0); }
-    100% { opacity: 0; transform: translate(-50%, -20px); }
-  }
- /* Carte correcte affichée au centre */
-#correct-answer-card {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2000;
-    width: 120px;
-    height: 160px;
-    display: none; /* Masqué par défaut */
-    perspective: 1000px;
-  }
-  
-  #correct-answer-card .card-inner {
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-    transition: transform 0.6s;
-    transform: rotateY(0deg); /* Par défaut, la carte n'est pas retournée */
-  }
-  
-  #correct-answer-card.show .card-inner {
-    transform: rotateY(180deg); /* Retourne la carte pour afficher la face avant */
-  }
-  
-  #correct-answer-card .card-front,
-  #correct-answer-card .card-back {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    backface-visibility: hidden;
-    border-radius: 10px;
-  }
-  
-  /* Face avant de la carte correcte */
-  #correct-answer-card .card-front {
-    background-image: url('images/carteface.png');
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 14px;
-    color: #000;
-    padding: 10px;
-    text-align: center;
-  }
-  
-  /* Face arrière de la carte correcte */
-  #correct-answer-card .card-back {
-    background-image: url('images/carte.png');
-    background-size: cover;
-    background-position: center;
-  }
-  /* Parcours visuel */
-#progress-track {
-    position: relative;
-    width: 80%;
-    max-width: 600px;
-    height: 50px;
-    margin: 20px auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: transparent;
-  }
-  
-  .progress-point {
-    width: 20px;
-    height: 20px;
-    background-color: #ccc; /* Couleur par défaut */
-    border-radius: 50%;
-    border: 2px solid #000;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-    transition: background-color 0.3s, transform 0.3s;
-  }
-  
-  .progress-point.active {
-    transform: scale(1.2); /* Animation pour le point actif */
-  }
-  
-  .progress-point.correct {
-    background-color: #4CAF50; /* Vert pour une bonne réponse */
-  }
-  
-  .progress-point.incorrect {
-    background-color: #FFA500; /* Orange pour une mauvaise réponse */
-  }
-  
-  /* Ligne sinueuse connectant les points */
-  #progress-track:before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 10%;
-    right: 10%;
-    height: 5px;
-    background: linear-gradient(to right, #ccc, #ccc);
-    z-index: -1;
-    transform: translateY(-50%);
-    border-radius: 5px;
-  }
-  /* Indique une carte sélectionnée */
-.card.selected .card-inner {
-    transform: rotateY(180deg);
-    box-shadow: 0 0 10px 2px rgba(255, 255, 0, 0.7);
-    border: 2px solid #FFD700; /* Bordure dorée pour la sélection */
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #000;
+  color: #fff;
 }
 
-/* Optionnel : Désactiver l'effet hover sur les appareils tactiles */
+/* Conteneur principal du jeu */
+#game-container {
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  transition: background-image 0.5s ease;
+}
+
+/* Titre */
+h1 {
+  font-size: 2em;
+  margin: 10px;
+}
+
+/* Boutons */
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 15px;
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* Score */
+#score {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Question */
+.question {
+  background-color: rgba(64, 45, 45, 0.734);
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  margin: 10px auto;
+  max-width: 80%;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+/* Conteneur des cartes */
+.card-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 20px; /* Ajouté pour mieux espacer les cartes */
+}
+
+/* Cartes */
+.card {
+  width: 28vw;
+  height: 37vw;
+  max-width: 120px;
+  max-height: 160px;
+  position: relative;
+  perspective: 1000px;
+  cursor: pointer;
+  /* Optimisation des performances */
+  will-change: transform;
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+  /* Compatibilité avec les navigateurs */
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transition: transform 0.6s;
+  transition: transform 0.6s;
+}
+
+.card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card.selected .card-inner {
+  transform: rotateY(180deg);
+  box-shadow: 0 0 10px 2px rgba(255, 255, 0, 0.7);
+  border: 2px solid #FFD700; /* Bordure dorée pour la sélection */
+}
+
+.card-front, .card-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+  border-radius: 10px;
+}
+
+/* Face avant */
+.card-front {
+  background-image: url('images/carteface.png');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #000;
+  font-size: 14px;
+  padding: 10px;
+  box-sizing: border-box;
+  transform: rotateY(180deg);
+  /* Compatibilité avec les navigateurs */
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
+/* Face arrière */
+.card-back {
+  background-image: url('images/carte.png');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Zone de feedback */
+#feedback {
+  position: fixed;
+  top: 200px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  font-size: 18px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  display: none; /* Masqué par défaut */
+  animation: fadeInOut 3s ease;
+}
+
+/* Animation CSS */
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translate(-50%, -20px); }
+  10% { opacity: 1; transform: translate(-50%, 0); }
+  90% { opacity: 1; transform: translate(-50%, 0); }
+  100% { opacity: 0; transform: translate(-50%, -20px); }
+}
+
+/* Image de démarrage */
+#start-image {
+  display: block;
+  margin: 20px auto;
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Carte correcte affichée au centre */
+#correct-answer-card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2000;
+  width: 120px;
+  height: 160px;
+  display: none; /* Masqué par défaut */
+  perspective: 1000px;
+}
+
+#correct-answer-card .card-inner {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+  transform: rotateY(0deg); /* Par défaut, la carte n'est pas retournée */
+  /* Compatibilité avec les navigateurs */
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transition: transform 0.6s;
+  transition: transform 0.6s;
+}
+
+#correct-answer-card.show .card-inner {
+  transform: rotateY(180deg); /* Retourne la carte pour afficher la face avant */
+  /* Compatibilité avec les navigateurs */
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
+#correct-answer-card .card-front,
+#correct-answer-card .card-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+  border-radius: 10px;
+}
+
+/* Face avant de la carte correcte */
+#correct-answer-card .card-front {
+  background-image: url('images/carteface.png');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  color: #000;
+  padding: 10px;
+  text-align: center;
+  /* Compatibilité avec les navigateurs */
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
+/* Face arrière de la carte correcte */
+#correct-answer-card .card-back {
+  background-image: url('images/carte.png');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Parcours visuel */
+#progress-track {
+  position: relative;
+  width: 80%;
+  max-width: 600px;
+  height: 50px;
+  margin: 20px auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+}
+
+.progress-point {
+  width: 20px;
+  height: 20px;
+  background-color: #ccc; /* Couleur par défaut */
+  border-radius: 50%;
+  border: 2px solid #000;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.progress-point.active {
+  transform: scale(1.2); /* Animation pour le point actif */
+}
+
+.progress-point.correct {
+  background-color: #4CAF50; /* Vert pour une bonne réponse */
+}
+
+.progress-point.incorrect {
+  background-color: #FFA500; /* Orange pour une mauvaise réponse */
+}
+
+/* Ligne sinueuse connectant les points */
+#progress-track:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  right: 10%;
+  height: 5px;
+  background: linear-gradient(to right, #ccc, #ccc);
+  z-index: -1;
+  transform: translateY(-50%);
+  border-radius: 5px;
+}
+
+/* Indique une carte sélectionnée */
+.card.selected .card-inner {
+  transform: rotateY(180deg);
+  box-shadow: 0 0 10px 2px rgba(255, 255, 0, 0.7);
+  border: 2px solid #FFD700; /* Bordure dorée pour la sélection */
+}
+
+/* Désactiver l'effet hover sur les appareils tactiles */
 @media (hover: none) and (pointer: coarse) {
-    .card:hover .card-inner {
-        transform: none;
-    }
+  .card:hover .card-inner {
+      transform: none;
+  }
 }
 
 /* Ajout d'une transition pour une meilleure expérience visuelle */
 .card-inner {
-    transition: transform 0.6s, box-shadow 0.3s, border 0.3s;
+  transition: transform 0.6s, box-shadow 0.3s, border 0.3s;
+  /* Déjà inclus dans les définitions précédentes */
 }
 
-/* Optionnel : Curseur différent pour indiquer l'interactivité */
+/* Curseur différent pour indiquer l'interactivité */
 .card {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .card.selected {
-    cursor: default;
+  cursor: default;
+}
+
+/* Responsivité pour les petits écrans */
+@media (max-width: 600px) {
+  .card {
+      width: 40vw;
+      height: 55vw;
+      max-width: 150px;
+      max-height: 200px;
+  }
+
+  /* Ajustements supplémentaires pour les petits écrans si nécessaire */
+}
+
+/* Responsivité pour les grands écrans */
+@media screen and (min-width: 1024px) {
+  .card-container {
+      margin-top: 30px; /* Remonte les cartes en plein écran */
+  }
 }
