@@ -120,7 +120,7 @@ function loadQuestion() {
   const cardsContainer = document.getElementById("cards");
   cardsContainer.innerHTML = answers
     .map((answer, index) => `
-      <div class="card" tabindex="0" role="button" aria-pressed="false" aria-label="Réponse ${index + 1}: ${escapeHTML(answer)}" onclick="handleCardClick('${escapeHTML(answer)}', '${escapeHTML(correctAnswer)}', this)" onkeypress="handleKeyPress(event, '${escapeHTML(answer)}', '${escapeHTML(correctAnswer)}', this)">
+      <div class="card" tabindex="0" role="button" aria-pressed="false" aria-label="Réponse ${index + 1}: ${escapeHTML(answer)}">
         <div class="card-inner">
           <div class="card-front">${escapeHTML(answer)}</div>
           <div class="card-back"></div>
@@ -129,7 +129,18 @@ function loadQuestion() {
     `)
     .join("");
 
-  // Ajout des écouteurs d'événements pour la navigation au clavier
+  // Ajouter des écouteurs d'événements
+  const cardElements = cardsContainer.querySelectorAll('.card');
+  cardElements.forEach(card => {
+    const front = card.querySelector('.card-front');
+    const answer = front.textContent;
+
+    // Clic
+    card.addEventListener('click', () => handleCardClick(answer, correctAnswer, card));
+
+    // Pression de touche
+    card.addEventListener('keypress', (event) => handleKeyPress(event, answer, correctAnswer, card));
+  });
 }
 
 // Gère le clic/touch sur une carte
