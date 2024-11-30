@@ -141,7 +141,16 @@ function loadQuestion() {
     // Pression de touche
     card.addEventListener('keypress', (event) => handleKeyPress(event, answer, correctAnswer, card));
   });
+
+  // Après que les cartes sont générées, on les retourne toutes d'un coup
+  setTimeout(() => {
+    const allCardInners = cardsContainer.querySelectorAll('.card-inner');
+    allCardInners.forEach(cardInner => {
+      cardInner.classList.add('flip'); // Ajoute la classe pour déclencher l'animation
+    });
+  }, 100); // Délai léger pour s'assurer que les cartes sont complètement chargées
 }
+
 
 // Gère le clic/touch sur une carte
 function handleCardClick(selectedAnswer, correctAnswer, cardElement) {
