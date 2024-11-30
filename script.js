@@ -13,7 +13,6 @@ let currentQuestionIndex = 0;
 let currentQuestions = [];
 let correctSound;
 let isProcessing = false;
-let selectedCard = null; // Nouvelle variable pour suivre la carte sélectionnée
 
 // Échappe les caractères spéciaux pour éviter les erreurs HTML ou les attaques XSS
 function escapeHTML(string) {
@@ -77,7 +76,6 @@ function startGame(epoch) {
   currentEpoch = epoch;
   currentScore = 0;
   currentQuestionIndex = 0;
-  selectedCard = null; // Réinitialise la carte sélectionnée
 
   document.getElementById("epoch-select").style.display = "none";
   document.getElementById("quiz").style.display = "block";
@@ -129,69 +127,42 @@ function loadQuestion() {
     `)
     .join("");
 
-  // Ajouter des écouteurs d'événements
+  // Ajouter des écouteurs d'événements avec pointerup
   const cardElements = cardsContainer.querySelectorAll('.card');
   cardElements.forEach(card => {
     const front = card.querySelector('.card-front');
     const answer = front.textContent;
 
-    // Clic
-    card.addEventListener('click', () => handleCardClick(answer, correctAnswer, card));
-
-    // Pression de touche
-    card.addEventListener('keypress', (event) => handleKeyPress(event, answer, correctAnswer, card));
+    // Utilisez pointerup au lieu de click et keypress
+    card.addEventListener('pointerup', () => handleCardClick(answer, correctAnswer, card));
   });
 }
 
-// Gère le clic/touch sur une carte
+// Gère le clic/tap sur une carte
 function handleCardClick(selectedAnswer, correctAnswer, cardElement) {
-  if (isProcessing) return;
-
-  if (isTouchDevice()) {
-    if (selectedCard === cardElement) {
-      // Deuxième touche : valider la carte
-      checkCard(selectedAnswer, correctAnswer);
-      selectedCard = null;
-      // Retire la classe de sélection
-      cardElement.classList.remove('selected');
-    } else {
-      // Première touche : sélectionner la carte
-      if (selectedCard) {
-        // Désélectionne la carte précédemment sélectionnée
-        selectedCard.classList.remove('selected');
-      }
-      selectedCard = cardElement;
-      cardElement.classList.add('selected');
-    }
-  } else {
-    // Sur desktop, valider directement
-    checkCard(selectedAnswer, correctAnswer);
-  }
-}
-
-// Gère les événements clavier
-function handleKeyPress(event, selectedAnswer, correctAnswer, cardElement) {
-  if (event.key === 'Enter' || event.key === ' ') {
-    event.preventDefault();
-    handleCardClick(selectedAnswer, correctAnswer, cardElement);
-  }
-}
-
-// Vérifie si une carte est cliquée
-function checkCard(selectedAnswer, correctAnswer) {
   if (isProcessing) return;
   isProcessing = true;
 
+  console.log("Carte cliquée :", selectedAnswer);
+
+  // Inverser la carte en ajoutant une classe 'selected'
+  cardElement.classList.add('selected');
+  console.log("Classe 'selected' ajoutée à la carte");
+
   if (selectedAnswer === correctAnswer) {
+    // Bonne réponse
     currentScore += 5;
     showFeedback("✅ Bonne réponse !", true);
     correctSound.play();
     updateProgressTrack(true);
+    console.log("Bonne réponse détectée");
   } else {
+    // Mauvaise réponse
     currentScore -= 1;
     showFeedback("❌ Mauvaise réponse !", false);
     showCorrectAnswer(correctAnswer);
     updateProgressTrack(false);
+    console.log("Mauvaise réponse détectée");
   }
 
   updateScore();
@@ -235,7 +206,7 @@ function resetProgressTrack() {
 
 // Met à jour le parcours visuel
 function updateProgressTrack(isCorrect) {
-  const pointId = `point-${currentQuestionIndex + 1}`;
+  const pointId = `point-${currentQuestionIndex}`;
   const pointElement = document.getElementById(pointId);
 
   if (pointElement) {
